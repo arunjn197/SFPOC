@@ -135,7 +135,10 @@ jobs:
               shell: bash
               run: |
                    echo ${{ vars.VAR_STAGING_URL }} > ./SFDX_STAGING_URL.json
-
+            # Show Org List
+            - name: 'Show Org List'
+              run: sfdx force:org:list
+              
             # Authenticate to org using the URL stored in the text file
             - name: 'Authenticate to Staging Org'
               run: sfdx auth:sfdxurl:store -f ./SFDX_STAGING_URL.json -s -a staging
