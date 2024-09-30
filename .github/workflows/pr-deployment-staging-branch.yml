@@ -46,10 +46,10 @@ jobs:
             - name: 'Populate auth file with SFDX_URL secret of integration org'
               shell: bash
               run: |
-                  echo '{"status":0,"result":{"id":"00D2w00000QvkagEAB","apiVersion":"61.0","accessToken":"00D2w00000Qvkag!ARMAQOHSRH82g5rGwVqQcnKAIZWyF9ZrVc5Py.va_oAT3KAFioB1nKOiKewN67h7cW4t_nZ94omJq_lhsFP31iGhsv2URm8y","instanceUrl":"https://creative-bear-1tytid-dev-ed.trailblaze.my.salesforce.com","username":"arunjn19793@creative-bear-1tytid.com","clientId":"PlatformCLI","connectedStatus":"Connected","sfdxAuthUrl":"force://PlatformCLI::5Aep861ZBQbtA4s3JVQS_rQi8qBQvZjY8h57yAsdU14TnLaApEDSTFGxR1kf8VOueamrf67lcCcN4pwLSThHVSS@creative-bear-1tytid-dev-ed.trailblaze.my.salesforce.com","alias":"Training"}}' > ./SFDX_STAGING_URL.json
+                  echo $ {{ vars.VAR_STAGING_URL }} > ./SFDX_STAGING_URL.json
 
             - name: 'Authenticate to Staging Org to Staging org'
-              run: sfdx auth:sfdxurl:store -f ./SFDX_STAGING_URL.txt -s -a staging
+              run: sfdx auth:sfdxurl:store -f ./SFDX_STAGING_URL.json -s -a staging
 
             - name: 'Deploy delta changes - run specified tests'
               if: ${{ env.APEX_TESTS != 'all' }}
