@@ -12,6 +12,7 @@ private class AccountControllerTest {
             List<Account> accList = AccountController.getAccountList();
         Test.stopTest();
 
+
         Assert.areEqual(accList.size(), 1, 'There must be one Account returned.');
     }
 
