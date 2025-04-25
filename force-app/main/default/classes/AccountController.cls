@@ -1,3 +1,7 @@
+/**
+@description Account Controller
+@author Arun Jain
+*/
 public with sharing class AccountController {
     @AuraEnabled(cacheable=true)
     public static List<Account> getAccountList() {
